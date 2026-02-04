@@ -1,0 +1,20 @@
+# --- Core Deep Learning & NLP ---
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.21.0
+safetensors>=0.3.0
+sentencepiece
+protobuf
+# --- Data Manipulation & Math ---
+pandas
+numpy
+scipy
+scikit-learn
+
+# --- Utilities ---
+tqdm
+regex
+
+# --- Visualization (Optional but recommended for notebooks) ---
+matplotlib
+seaborn
