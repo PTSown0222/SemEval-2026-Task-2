@@ -89,7 +89,7 @@ We optimized the models using the Concordance Correlation Coefficient (CCC) Loss
 ## 2. Code Structure
 
 The submission is organized into three separate folders, each containing the end-to-end solution (Training $\rightarrow$ Inference) for the respective subtask.
-
+```text
 SEMEVAL2026FT/
 │
 ├── Subtask1/
@@ -113,6 +113,7 @@ SEMEVAL2026FT/
 │
 ├── README.md
 └── requirements.txt
+```
 
 ## 3. Download Model Weights
 
@@ -169,13 +170,21 @@ Subtask 2B: Place test files in Subtask2b/data/. Important: For Subtask 2B, the 
 **Step 4: Run the Inference Notebooks**
 
 Navigate to the specific subtask folder (e.g., /Subtask1).
+
 Open the notebook named Inference_subtask*.ipynb.
+
 Set the Kernel to your Python environment.
+
 Click "Run All". The system will perform the following actions automatically:
+
 Auto-Detection: Locates the test dataset and the weight files without requiring manual path editing.
+
 Data Processing: Applies the sliding window logic (Window size = 4 for Subtask 1).
+
 Model Loading: Initializes the MoE architecture and loads the weights.
+
 Generation: Runs the model on the device (prioritizes CUDA GPU if detected, otherwise defaults to CPU).
+
 Export: Saves the final results to submission.csv in the subtask folder.
 
 ## 5. Author & Contact
