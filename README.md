@@ -50,11 +50,14 @@ Data Integrity: **Data Integrity:** We enforced strict separation between traini
 
 We optimized the models using the Concordance Correlation Coefficient (CCC) Loss to maximize the correlation between predictions and ground truth.
 
-- Subtask 1 Loss: $0.4 \times \mathcal{L}_{Valence} + 0.6 \times \mathcal{L}_{Arousal}$, Learning_rate = 2e-5, max_seq_length = 384
+* **Subtask 1 Loss:** `0.4 * Loss_Valence + 0.6 * Loss_Arousal`
+    * Learning Rate: `2e-5` | Max Seq Length: `384`
 
-- Subtask 2A Loss: $0.5 \times \mathcal{L}_{Valence} + 0.5 \times \mathcal{L}_{Arousal}$, learnning_rate = 2e-5,max_seq_length = 512
+* **Subtask 2A Loss:** `0.5 * Loss_Valence + 0.5 * Loss_Arousal`
+    * Learning Rate: `2e-5` | Max Seq Length: `512`
 
-- Subtask 2B Loss: $0.5 \times \mathcal{L}_{Valence} + 0.5 \times \mathcal{L}_{Arousal}$, learning_rate = 3e-5, max_seq__length = 512
+* **Subtask 2B Loss:** `0.5 * Loss_Valence + 0.5 * Loss_Arousal`
+    * Learning Rate: `3e-5` | Max Seq Length: `512`
 
 ### D.Examples
 
