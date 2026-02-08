@@ -190,7 +190,34 @@ Generation: Runs the model on the device (prioritizes CUDA GPU if detected, othe
 
 Export: Saves the final results to submission.csv in the subtask folder.
 
-## 5. Author & Contact
+## 5. Results
+
+The performance of the system was evaluated across three subtasks using **Pearson Correlation ($r$)** and **Mean Absolute Error (MAE)**. 
+
+The MoE (Mixture of Experts) architecture was implemented with a sliding window logic (Window Size = 4 for Subtask 1) to process the data.
+
+### 5.1. Performance Metrics Summary
+
+The table below highlights the primary metrics for each subtask per outcome (Valence and Arousal).
+
+| Subtask | Outcome | Primary Metric ($r$) | MAE |
+| :--- | :--- | :--- | :--- |
+| **Subtask 1** | Valence (V) | 0.636688 | 0.693666 |
+| | Arousal (A) | 0.488985 | 0.407814 |
+| **Subtask 2a** | Valence (V) | 0.629211 | 1.141477 |
+| | Arousal (A) | 0.632732 | 0.688843 |
+| **Subtask 2b** | Valence (V) | -0.168636 | 0.722768 |
+| | Arousal (A) | -0.059553 | 0.568374 |
+
+### 5.2. Key Findings
+
+* **Subtask 1 (Static/Batch):** The model achieved a strong composite correlation for Valence ($r \approx 0.64$), while Arousal showed moderate correlation ($r \approx 0.49$).
+* **Subtask 2a:** This task yielded the most balanced results, with high correlation scores exceeding 0.62 for both dimensions.
+* **Subtask 2b:** The model encountered challenges with this specific subtask, resulting in negative correlation values. This suggests a discrepancy between the predicted trends and the ground truth for this subset.
+
+---
+
+## 6. Author & Contact
 
 Team Leader & Primary Developer:
 
