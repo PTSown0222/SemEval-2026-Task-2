@@ -1,6 +1,6 @@
 # SemEval - 2026 Task 2: Predicting Variation in Emotional Valence and Arousal over Time from Ecological Essays - System Submission
 
-**Team Name:** Student Of University Information Of Technology (UIT)
+**Team Name:** CITD@UIT
 
 ## 1. System Description
 
