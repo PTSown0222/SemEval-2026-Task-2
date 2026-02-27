@@ -2,6 +2,11 @@
 
 **Team Name:** CITD@UIT
 
+## 🏆 Competition Achievement
+Our team (**CITD@UIT**) achieved competitive results in the **SemEval-2026 Task 2** official leaderboard:
+* **Top 10** in Subtask 1: Longitudinal Affect Assessment (Rank **9/26**).
+* **Top 5** in Subtask 2A: State Change Forecasting (Rank **5/15**).
+
 ## 1. System Description
 
 ### A. Data Strategy
@@ -196,18 +201,18 @@ The performance of the system was evaluated across three subtasks using **Pearso
 
 The MoE (Mixture of Experts) architecture was implemented with a sliding window logic (Window Size = 4 for Subtask 1) to process the data.
 
-### 5.1. Performance Metrics Summary
+### 5.1. Performance Metrics & Official Rankings
 
-The table below highlights the primary metrics for each subtask per outcome (Valence and Arousal).
+The table below summarises our official performance and rankings in SemEval-2026 Task 2.
 
-| Subtask | Outcome | Primary Metric ($r$) | MAE |
-| :--- | :--- | :--- | :--- |
-| **Subtask 1** | Valence (V) | 0.636688 | 0.693666 |
-| | Arousal (A) | 0.488985 | 0.407814 |
-| **Subtask 2a** | Valence (V) | 0.629211 | 1.141477 |
-| | Arousal (A) | 0.632732 | 0.688843 |
-| **Subtask 2b** | Valence (V) | -0.168636 | 0.722768 |
-| | Arousal (A) | -0.059553 | 0.568374 |
+| Subtask | Outcome | Primary Metric ($r$) | MAE | **Official Rank** |
+| :--- | :--- | :--- | :--- | :--- |
+| **Subtask 1** | Valence (V) | 0.636688 | 0.693666 | **9th** / 26 |
+| | Arousal (A) | 0.488985 | 0.407814 | |
+| **Subtask 2a** | Valence (V) | 0.629211 | 1.141477 | **5th** / 15 |
+| | Arousal (A) | 0.632732 | 0.688843 | |
+| **Subtask 2b** | Valence (V) | -0.168636 | 0.722768 | 11th / 12 |
+| | Arousal (A) | -0.059553 | 0.568374 | |
 
 ### 5.2. Key Findings
 
