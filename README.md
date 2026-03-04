@@ -1,4 +1,4 @@
-# SemEval - 2026 Task 2: Predicting Variation in Emotional Valence and Arousal over Time from Ecological Essays - System Submission
+# SemEval - 2026 Task 2: CITD@UIT at SemEval-2026 Task 2: Temporal Mixture-of-Experts for Longitudinal Valence and Arousal Prediction from Ecological Essays
 
 **Team Name:** CITD@UIT
 
