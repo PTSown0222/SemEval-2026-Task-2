@@ -1,7 +1,4 @@
 # SemEval - 2026 Task 2: CITD@UIT at SemEval-2026 Task 2: Temporal Mixture-of-Experts for Longitudinal Valence and Arousal Prediction from Ecological Essays
-[![Paper](https://img.shields.io/badge/Paper-Accepted-success)](link_den_paper_neu_co)
-[![Competition](https://img.shields.io/badge/SemEval--2026-Task--2-blue)](https://semeval.github.io/SemEval2026/)
-[![Rank](https://img.shields.io/badge/Rank-Top%205%20%26%20Top%209-orange)](#competition-achievement)
 
 **Team Name:** CITD@UIT
 
