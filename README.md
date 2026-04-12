@@ -237,7 +237,7 @@ Team Leader & Primary Developer:
 
 Contact for Correspondence:
 
-- Email: 25210032@ms.uit.edu.vn
+- Email: phuongtheson22020210@gmail.com
 
 - Role: Team Leader, responsible for model architecture design, training, and system submission.
 
