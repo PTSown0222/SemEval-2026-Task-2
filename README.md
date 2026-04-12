@@ -223,7 +223,7 @@ The table below summarises our official performance and rankings in SemEval-2026
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a19cc8f2-3a69-4210-b732-4e975c96bd55" width="100%" alt="Subtask 2A Training Metrics">
   <br>
-  <em>Figure 1: Training/Validation Loss (left) and Pearson Correlation (right) for Subtask 2A: State Change Forecasting.</em>
+  <em>Figure 1: Training/Validation Loss (left) and Pearson Correlation (right) for The Best Subtask 2A: State Change Forecasting.</em>
 </p>
 
 
