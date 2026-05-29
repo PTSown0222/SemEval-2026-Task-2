@@ -1,4 +1,4 @@
-<img width="500" height="500" alt="SemEval2026-Task2" src="https://github.com/user-attachments/assets/130aa709-130f-43aa-9121-0712a2c7acd9" />
+<img width="2722" height="1568" alt="SemEvals" src="https://github.com/user-attachments/assets/7718d831-1992-4581-a9d7-3e72a99ca0a1" />
 
 # SemEval - 2026 Task 2: CITD@UIT at SemEval-2026 Task 2: Temporal Mixture-of-Experts for Longitudinal Valence and Arousal Prediction from Ecological Essays
 
