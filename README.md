@@ -1,59 +1,25 @@
 <img width="2722" height="1568" alt="SemEvals" src="https://github.com/user-attachments/assets/7718d831-1992-4581-a9d7-3e72a99ca0a1" />
 
-# SemEval - 2026 Task 2: CITD@UIT at SemEval-2026 Task 2: Temporal Mixture-of-Experts for Longitudinal Valence and Arousal Prediction from Ecological Essays
+# SemEval-2026 Task 2: Temporal Mixture-of-Experts for Longitudinal Valence and Arousal Prediction
 
 **Team Name:** CITD@UIT
 
-## 🏆 Competition Achievement
-Our team (**CITD@UIT**) achieved competitive results in the **SemEval-2026 Task 2** official leaderboard:
-* **Top 10** in Subtask 1: Longitudinal Affect Assessment (Rank **9/26**).
-* **Top 5** in Subtask 2A: State Change Forecasting (Rank **5/15**).
+This repository contains the official system description and implementation for our participation in **SemEval-2026 Task 2**. We propose a unified framework leveraging [cardiffnlp/twitter-roberta-base-sentiment-latest](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest) augmented with a **Temporal Mixture-of-Experts (MoE)** architecture to capture longitudinal affect shifts.
 
-## 1. System Description
+## 🏆 Competition Achievements
+Our team (**CITD@UIT**) achieved competitive results on the official SemEval-2026 Task 2 leaderboard:
+* **Subtask 1 (Longitudinal Affect Assessment):** Rank **9/26** (Top 10).
+* **Subtask 2A (State Change Forecasting):** Rank **5/15** (Top 5).
 
-### A. Data Strategy
+## 🚀 Model Weights
+You can access our fine-tuned models on Hugging Face:
+👉 [TheSon2202/Temporal-MoEs-RoBERTa](https://huggingface.co/TheSon2202/Temporal-MoEs-RoBERTa)
 
-**Source:** We strictly utilized the official SemEval 2026 Task 2 dataset (Training, Validation, and Testing splits).
+## System Description
 
-Data Integrity: **Data Integrity:** We enforced strict separation between training and validation sets to ensure no data leakage. The chronological order of user posts was preserved by sorting `timestamp` and `user_id` before processing.
+Our system employs a unified framework based on `cardiffnlp/twitter-roberta-base-sentiment-latest`, augmented with a Temporal Mixture-of-Experts (MoE) head to capture longitudinal emotional shifts.
 
-**Subtask-Specific Preprocessing:**
-
-* **Subtask 1:** We applied text normalization (spacing correction) and a sliding window mechanism ($k=4$) to incorporate user history context. The data splitting logic is implemented in the initialization cells of the notebook.
-
-* **Subtask 2A:** We applied text normalization (spacing correction) and a sliding window mechanism ($k=8$) to incorporate user history context.
-
-* **Subtask 2B:** We model the user's emotional shift by comparing their past (Group 1) and recent (Group 2) activities using a **Dual-Sequence Strategy**:
-    * *Text:* Concatenation of the last 5 posts from Group 1 and Group 2 with a separator structure: `<s>` G1_Posts `</s>` `</s>` G2_Posts `</s>`.
-    * *Tabular:* Incorporation of historical baselines (`mean_valence_half1`, `mean_arousal_half1`) as auxiliary numerical features.
-
-### B. Model Architecture
-
-**Backbone:** We utilized **`cardiffnlp/twitter-roberta-base-sentiment-latest`** as the core encoder for all subtasks.
-
-##### Subtask 1: Longitudinal Affect Assessment
-
-- Architecture: RoBERTa Cardiff + Mean Pooling + Soft Gating Mixture-of-Experts (MoE) Head (4 Experts).
-
-- Inputs: A sequence of text combining past posts ($k=4$) and the current post, separated by `</s>`. Max length: 384 tokens.
-
-- Outputs: Two continuous scores: Valence and Arousal.
-
-#### Subtask 2A: Forecasting Future Variation in Affect - State change
-
-- Architecture: RoBERTa Cardiff + Attention Pooling + Sparse TopK Mixture-of-Experts (MoE) Head (4 Experts).
-
-- Outputs: Two continuous scores representing State Change Valence and State Change Arousal.
-
-#### Subtask 2B: Forecasting Future Variation in Affect - Dispositional change
-
-- Architecture: RoBERTa Cardiff + Mean Pooling + Sparse TopK Mixture-of-Experts (MoE) Head (4 Experts).
-
-- Mechanism: The model fuses text embeddings (768-dim) with numerical baseline features (2-dim) before passing through a Sparse MoE Head (Top-2 Gating) to predict the magnitude of emotional change.
-
-- Outputs: Two continuous scores representing Disposition Change Valence and Disposition Change Arousal.
-
-### C. Training Strategy
+### Training Strategy
 
 We optimized the models using the Concordance Correlation Coefficient (CCC) Loss to maximize the correlation between predictions and ground truth.
 
@@ -66,7 +32,7 @@ We optimized the models using the Concordance Correlation Coefficient (CCC) Loss
 * **Subtask 2B Loss:** `0.5 * Loss_Valence + 0.5 * Loss_Arousal`
     * Learning Rate: `3e-5` | Max Seq Length: `512`
 
-### D.Examples
+### Examples
 
 #### Subtask 1
 * **Training Instance:**
@@ -101,41 +67,13 @@ We optimized the models using the Concordance Correlation Coefficient (CCC) Loss
 The submission is organized into three separate folders, each containing the end-to-end solution (Training $\rightarrow$ Inference) for the respective subtask.
 ```text
 SEMEVAL2026FT/
-│
-├── Subtask1/
-│   ├── data/
-│   ├── weights/                            <-- Download from section 3 (current is empty)
-│   ├── Inference_subtask1.ipynb            <-- Inference (locally run for Organizers test and export CSV)
-│   └── subtask1-code.ipynb                 <-- Including end to end Training + Inference script in Kaggle
-│
-├── Subtask2a/
-│   ├── data/
-│   ├── weights/
-│   │   └── final_model_subtask2a/          <-- Download from section 3 (current is empty)
-│   ├── Inference_sutask2a.ipynb            <-- Inference (locally run for Organizers test and export CSV)
-│   └── subtask2a-code.ipynb                <-- Including end to end Training + Inference script in Kaggle
-│
-├── Subtask2b/
-│   ├── data/
-│   ├── weights/                            <-- Download from section 3 (current is empty)
-│   ├── Inference_sutask2a.ipynb            <-- Inference (locally run for Organizers test and export CSV)                             
-│   └── subtask2b-code.ipynb                <-- Including end to end Training + Inference script in Kaggle
-│
-├── README.md
+├── Subtask1/   # End-to-end training & inference
+├── Subtask2a/  # End-to-end training & inference
+├── Subtask2b/  # End-to-end training & inference
 └── requirements.txt
 ```
 
-## 3. Download Model Weights
-
-Due to file size limits, the trained model weights are hosted externally. Please download the weights for each subtask and place them in the corresponding folders before running inference.
-
-| Subtask | Download Link | File Name |
-| :--- | :--- | :--- |
-| **Subtask 1** | **[Download Here](https://drive.google.com/file/d/1MbGPYny-1ukdSQltWZeq6TXKHvWirZfg/view?usp=drive_link)** | `final_model_subtask1.zip` |
-| **Subtask 2A** | **[Download Here](https://drive.google.com/file/d/14k8RlNk7rbZ6EjjSfSyGAflLV7PA_PWc/view?usp=drive_link)** | `final_model_subtask2a.zip` |
-| **Subtask 2B** | **[Download Here](https://drive.google.com/file/d/1paiXw5siAuEEH1exdkfqS53YPr4vioOn/view?usp=drive_link)** | `final_model_subtask2b.zip` |
-
-## 4. How to Run (Instructions)
+## How to Run (Instructions)
 
 Since the entire pipeline is contained within Jupyter Notebooks, reproducing the results is straightforward.
 
@@ -150,60 +88,13 @@ Install all required libraries using the provided requirements file:
 ```Bash
 pip install -r requirements.txt
 ```
-
-**Step 2: Download and Place Model Weights**
-
-Because of the large file sizes, pre-trained weights are hosted on Google Drive.
-
-1. Download the weights for each subtask using the links in Section 3.
-
-2. Extract the contents of each .zip file.
-
-3. Move the extracted folders into the respective weights/ directory of each subtask:
-
-- Subtask 1: Place the folder in Subtask1/weights/final_model_subtask1/.
-
-- Subtask 2A: Place the folder in Subtask2a/weights/final_model_subtask2a/.
-
-- Subtask 2B: Place the folder in Subtask2b/weights/final_model_subtask2b/.
-
-**Step 3: Prepare Test Data**
-
-Place the official test CSV files provided by the organizers into the data/ folder of the appropriate subtask.
-
-Subtask 1: Place test files in Subtask1/data/data_sub1/. The notebook will automatically search all subdirectories to find the correct CSV.
-
-Subtask 2A: Place test files in Subtask2a/data/.
-
-Subtask 2B: Place test files in Subtask2b/data/. Important: For Subtask 2B, the training CSV must also be in this folder so the system can calculate and fit the StandardScaler for numerical features.
-
-**Step 4: Run the Inference Notebooks**
-
-Navigate to the specific subtask folder (e.g., /Subtask1).
-
-Open the notebook named Inference_subtask*.ipynb.
-
-Set the Kernel to your Python environment.
-
-Click "Run All". The system will perform the following actions automatically:
-
-Auto-Detection: Locates the test dataset and the weight files without requiring manual path editing.
-
-Data Processing: Applies the sliding window logic (Window size = 4 for Subtask 1).
-
-Model Loading: Initializes the MoE architecture and loads the weights.
-
-Generation: Runs the model on the device (prioritizes CUDA GPU if detected, otherwise defaults to CPU).
-
-Export: Saves the final results to submission.csv in the subtask folder.
-
-## 5. Results
+## Results
 
 The performance of the system was evaluated across three subtasks using **Pearson Correlation ($r$)** and **Mean Absolute Error (MAE)**. 
 
 The MoE (Mixture of Experts) architecture was implemented with a sliding window logic (Window Size = 4 for Subtask 1) to process the data.
 
-### 5.1. Performance Metrics & Official Rankings
+### Performance Metrics & Official Rankings
 
 The table below summarises our official performance and rankings in SemEval-2026 Task 2.
 
@@ -228,7 +119,23 @@ The table below summarises our official performance and rankings in SemEval-2026
   <em>Figure 1: Training/Validation Loss (left) and Pearson Correlation (Centre) for The Best Subtask 2A: State Change Forecasting.</em>
 </p>
 
-## 6. Author & Contact
+## 📖 Citation
+If you use this system or our approach in your research, please cite our paper:
+
+```bibtex
+@inproceedings{phuong-etal-2026-citd,
+    title = "{CITD}@{UIT} at {S}em{E}val-2026 Task 2: Temporal Mixture-of-Experts for Longitudinal Valence and Arousal Prediction from Ecological Essays",
+    author = "Phuong, Son The  and Ngo, My Thuy-Tra  and Minh Dao, Tri  and Nguyen, Duc-Vu",
+    booktitle = "Proceedings of the 20th International Workshop on Semantic Evaluation (2026)",
+    year = "2026",
+    address = "San Diego, California, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "[https://aclanthology.org/2026.semeval-1.25/](https://aclanthology.org/2026.semeval-1.25/)",
+    doi = "10.18653/v1/2026.semeval-1.25"
+}
+```
+
+## Author & Contact
 
 Team Leader & Primary Developer:
 
