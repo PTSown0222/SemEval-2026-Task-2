@@ -14,6 +14,7 @@ Our team (**CITD@UIT**) achieved competitive results on the official SemEval-202
 ## 🚀 Model Weights
 You can access our fine-tuned models on Hugging Face:
 👉 [TheSon2202/Temporal-MoEs-RoBERTa](https://huggingface.co/TheSon2202/Temporal-MoEs-RoBERTa)
+
 You can try the demo here (Gradio):
 👉 **[Temporal-MoEs-RoBERTa Emotional State-Change Forecaster](https://huggingface.co/spaces/TheSon2202/temporal-moes-roberta-sentiment)**
 
@@ -24,7 +25,7 @@ We have also developed a high-performance **Mixture-of-Experts (MoE)** architect
 *   **Key Features:** Integrated custom MoE layers utilizing **Sparse Dynamic Expert Routing** to balance representation capacity with inference efficiency.
 *   **Performance:** Achieved an **F1-Score (Macro) of 0.9068** on the benchmark public test set.
 *   **Live Demo:** 👉 **[Try the Vietnamese Sentiment Demo here](https://huggingface.co/spaces/TheSon2202/bamibert-moe-vietnamese-sentiment-analytst)**
-*   
+
 ## System Description
 
 Our system employs a unified framework based on `cardiffnlp/twitter-roberta-base-sentiment-latest`, augmented with a Temporal Mixture-of-Experts (MoE) head to capture longitudinal emotional shifts.
